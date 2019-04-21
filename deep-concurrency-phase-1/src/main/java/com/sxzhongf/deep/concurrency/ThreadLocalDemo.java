@@ -9,8 +9,29 @@ package com.sxzhongf.deep.concurrency;
 public class ThreadLocalDemo {
     //创建ThreadLocal 变量
     static ThreadLocal<String> localVariable = new ThreadLocal<>();
+    //Demo 2 创建线程变量
+    public static ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
     public static void main(String[] args) {
+//        threadLocalVariable();
+        threadLocal.set("hello world.");
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("child threadlocal variable : "+threadLocal.get());
+            }
+        });
+
+        thread.start();
+
+        System.out.println("main threadlocal variable : "+threadLocal.get());
+
+    }
+
+    /**
+     * the place of ThreadLocal variable saved
+     */
+    private static void threadLocalVariable() {
         Thread thread1 = new Thread(new Runnable() {
             @Override
             public void run() {
