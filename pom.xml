@@ -10,6 +10,7 @@
     <modules>
         <module>deep-concurrency-phase-1</module>
         <module>deep-concurrency-phase-2</module>
+        <module>deep-concurrency-phase-3</module>
     </modules>
     <name>study java concurrency deeply</name>
     <description>study from 《Java 并发编程之美》</description>
