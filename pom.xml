@@ -12,10 +12,34 @@
         <module>deep-concurrency-phase-2</module>
         <module>deep-concurrency-phase-3</module>
         <module>deep-concurrency-phase-4</module>
+        <module>deep-concurrency-phase-5</module>
     </modules>
     <name>study java concurrency deeply</name>
     <description>study from 《Java 并发编程之美》</description>
     <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>11</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <fork>true</fork>
+                </configuration>
+            </plugin>
+        </plugins>l
+    </build>
 
 
 </project>
