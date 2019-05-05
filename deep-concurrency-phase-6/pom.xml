@@ -9,9 +9,10 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
 
-    <artifactId>deep-concurrency-phase-5</artifactId>
+    <artifactId>deep-concurrency-phase-6</artifactId>
     <name>study concurrency from 《Java 并发编程之美》</name>
-    <description>第五章::Java并发包中并发List源码剖析</description>
+    <description>第六章::Java并发包中锁原理剖析</description>
 
 </project>
