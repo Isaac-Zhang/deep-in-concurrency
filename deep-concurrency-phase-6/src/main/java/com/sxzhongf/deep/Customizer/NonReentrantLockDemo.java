@@ -16,11 +16,11 @@ import java.util.concurrent.locks.Condition;
  */
 public class NonReentrantLockDemo {
     final static CustomizerNonReentrantLock lock = new CustomizerNonReentrantLock();
-    final static Condition notFullCondition = lock.newCondition();
-    final static Condition notEmptyCondition = lock.newCondition();
+    final static  Condition notFullCondition = lock.newCondition();
+    final static  Condition notEmptyCondition = lock.newCondition();
 
-    final static Queue<String> queue = new LinkedBlockingQueue<>();
-    final static int queueSize = 10;
+    final static  Queue<String> queue = new LinkedBlockingQueue<>();
+    final static  int queueSize = 10;
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -48,28 +48,23 @@ public class NonReentrantLockDemo {
             }
         });
 
-        Thread consumer = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                {
-                    //获取锁
-                    lock.lock();
-                    try {
-                        while (0 == queue.size()) {
-                            notFullCondition.await();
-                        }
-                        //消费一个元素
-                        String zp = queue.poll();
-                        System.out.println("当前线程中consumer数量：" + queue.size());
-                        //唤醒生产线程
-                        notEmptyCondition.signalAll();
-
-                    } catch (Exception e) {
-                        e.getStackTrace();
-                    } finally {
-                        lock.unlock();
-                    }
+        Thread consumer = new Thread(() -> {
+            //获取锁
+            lock.lock();
+            try {
+                while (0 == queue.size()) {
+                    notFullCondition.await();
                 }
+                //消费一个元素
+                String zp = queue.poll();
+                System.out.println("当前线程中consumer数量：" + queue.size());
+                //唤醒生产线程
+                notEmptyCondition.signalAll();
+
+            } catch (Exception e) {
+                e.getStackTrace();
+            } finally {
+                lock.unlock();
             }
         });
 
@@ -77,5 +72,9 @@ public class NonReentrantLockDemo {
         producer.start();
         Thread.sleep(1000);
         consumer.start();
+
+//        producer.join();
+//        consumer.join();
+        Thread.currentThread().join();
     }
 }
