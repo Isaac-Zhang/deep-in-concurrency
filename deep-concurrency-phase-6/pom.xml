@@ -15,4 +15,18 @@
     <name>study concurrency from 《Java 并发编程之美》</name>
     <description>第六章::Java并发包中锁原理剖析</description>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                    <fork>true</fork>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
